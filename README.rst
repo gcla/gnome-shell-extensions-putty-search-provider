@@ -3,7 +3,7 @@ Putty Search Provider for Gnome Shell
 
 Load your Putty sessions from the Gnome Shell overview:
  
-.. image:: https://docs.google.com/file/d/0B3ccBtSP-gmRdVdoTmtZZFJ6Q1k/preview
+.. image:: https://dl.dropboxusercontent.com/u/2039645/putty-search-provider.png
 	   
 
 Requirements
