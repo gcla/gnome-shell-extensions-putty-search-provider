@@ -61,6 +61,7 @@ function PuttySearchProvider() {
 PuttySearchProvider.prototype = {
 
     _init: function(name) {
+        this.id = 'putty';
         this.configHosts = [];
         let filename = GLib.build_filenamev([GLib.get_home_dir(), '/.putty/', 'sessions']);
         this.configDir = Gio.file_new_for_path(filename);
@@ -94,7 +95,7 @@ PuttySearchProvider.prototype = {
     },
 
     getResultMeta: function(resultId) {
-	return { 'id': resultId, 'name': resultId };
+	return { 'id': "putty-" + resultId, 'name': resultId };
     },
 
     activateResult: function(id) {
