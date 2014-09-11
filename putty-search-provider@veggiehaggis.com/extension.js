@@ -95,7 +95,7 @@ PuttySearchProvider.prototype = {
     },
 
     getResultMeta: function(resultId) {
-	return { 'id': "putty-" + resultId, 'name': resultId };
+	return { 'id': resultId, 'name': resultId };
     },
 
     activateResult: function(id) {
