@@ -66,7 +66,7 @@ PuttySearchProvider.prototype = {
         let filename = GLib.build_filenamev([GLib.get_home_dir(), '/.putty/', 'sessions']);
         this.configDir = Gio.file_new_for_path(filename);
         this.sessionsMonitor = this.configDir.monitor_directory(Gio.FileMonitorFlags.NONE, null);
-        this.sessionsMonitor.connect('changed', Lang.bind(this, this._onSessionsChanged));
+        this._changed_signal = this.sessionsMonitor.connect('changed', Lang.bind(this, this._onSessionsChanged));
         this._onSessionsChanged(null, this.configDir, null, Gio.FileMonitorEvent.CREATED);
     },
 
@@ -153,6 +153,7 @@ function enable() {
 function disable() {
     if  (puttySearchProvider) {
         Main.overview.removeSearchProvider(puttySearchProvider);
+        puttySearchProvider.sessionsMonitor.disconnect(puttySearchProvider._changed_signal);
         puttySearchProvider.sessionsMonitor.cancel();
         puttySearchProvider = null;
     }
